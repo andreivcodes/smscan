@@ -3,7 +3,6 @@ use askama::Template;
 use axum::{
     http::StatusCode,
     response::{Html, IntoResponse, Response},
-    routing::get,
     Router,
 };
 use dotenv::dotenv;

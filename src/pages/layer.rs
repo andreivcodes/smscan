@@ -10,8 +10,7 @@ pub fn layer_routes() -> Router<AppState> {
 #[template(path = "pages/layer.html")]
 struct LayerTemplate;
 
-async fn page(Path(id): Path<u64>) -> impl IntoResponse {
-    println!("id: {}", id);
+async fn page(Path(_id): Path<u64>) -> impl IntoResponse {
     let template = LayerTemplate {};
     HtmlTemplate(template)
 }

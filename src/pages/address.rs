@@ -10,7 +10,7 @@ pub fn address_routes() -> Router<AppState> {
 #[template(path = "pages/address.html")]
 struct AddressTemplate;
 
-async fn page(Path(coinbase): Path<String>) -> impl IntoResponse {
+async fn page(Path(_coinbase): Path<String>) -> impl IntoResponse {
     let template = AddressTemplate {};
     HtmlTemplate(template)
 }
