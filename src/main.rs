@@ -1,4 +1,4 @@
-use crate::pages::{address::address_routes, home::home_routes, layer::layer_routes};
+use crate::pages::{account::account_route, home::home_routes, layer::layer_routes};
 use askama::Template;
 use axum::{
     http::StatusCode,
@@ -37,7 +37,7 @@ async fn main() -> anyhow::Result<()> {
         .layer(tower_livereload::LiveReloadLayer::new())
         .nest("/", home_routes())
         .nest("/layer", layer_routes())
-        .nest("/address", address_routes())
+        .nest("/account", account_route())
         .nest_service(
             "/assets",
             ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),
