@@ -1,3 +1,41 @@
 {% for layer in layers %}
-<li>{{ layer.name }}</li>
+<li class="py-2">
+  <div class="flex flex-row justify-between w-full">
+    <div class="flex flex-col">
+      <div class="flex flex-row justify-start items-center">
+        <span class="relative flex h-3 w-3">
+          {% if layer.processed == true %}
+          <span
+            class="relative inline-flex rounded-full h-3 w-3 bg-green-400"
+          ></span>
+          {% else %}
+          <span
+            class="relative inline-flex rounded-full h-3 w-3 bg-green-300"
+          ></span>
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
+          ></span>
+          {% endif %}
+        </span>
+        <a
+          class="flex flex-row hover:underline hover:pointer-events-auto"
+          href="/layer/{{layer.id}}"
+        >
+          <h1 class="text-sm pl-2">#{{layer.id}}</h1>
+          <img
+            class="w-[16px] mx-2"
+            src="/assets/images//url.svg"
+            alt="Layer {{layer.id}}"
+          />
+        </a>
+      </div>
+
+      <p class="text-sm text-zinc-400 font-mono">{{layer.hash}}</p>
+    </div>
+    <div class="flex flex-col justify-start font-mono">
+      <p class="text-sm text-zinc-400">State: {{layer.state_hash}}</p>
+      <p class="text-sm text-zinc-400">Block: {{layer.applied_block}}</p>
+    </div>
+  </div>
+</li>
 {% endfor %}

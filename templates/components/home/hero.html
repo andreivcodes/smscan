@@ -2,18 +2,30 @@
   <div class="p-6">
     <div class="mx-auto justify-center w-full flex flex-row p-6 gap-4">
       <div class="border-2 p-2 rounded-md w-3/5">
-        <h1>Latest layers</h1>
-        <ul hx-get="/home/layers" hx-trigger="load, every 10s" />
+        <h1 class="text-zinc-600 font-bold py-2">Latest layers</h1>
+        <ul
+          class="divide-y"
+          hx-get="/home/layers"
+          hx-trigger="load, every 10s"
+        />
       </div>
 
       <div class="border-2 p-2 rounded-md w-3/5">
-        <h1>Latest blocks</h1>
-        <ul hx-get="/home/blocks" hx-trigger="load, every 10s" />
+        <h1 class="text-zinc-600 font-bold py-2">Latest transactions</h1>
+        <ul
+          class="divide-y"
+          hx-get="/home/transactions"
+          hx-trigger="load, every 10s"
+        />
       </div>
 
       <div class="border-2 p-2 rounded-md w-3/5">
-        <h1>Latest transactions</h1>
-        <ul hx-get="/home/transactions" hx-trigger="load, every 10s" />
+        <h1 class="text-zinc-600 font-bold py-2">Latest rewards</h1>
+        <ul
+          class="divide-y"
+          hx-get="/home/rewards"
+          hx-trigger="load, every 10s"
+        />
       </div>
     </div>
   </div>

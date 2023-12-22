@@ -1,3 +1,37 @@
 {% for tx in txs %}
-<li>{{ tx.name }}</li>
+<li class="py-2">
+  <div class="flex flex-row justify-between w-full">
+    <div class="flex flex-col">
+      <div class="flex flex-col justify-start">
+        <a
+          class="flex flex-row hover:underline hover:pointer-events-auto"
+          href="/layer/{{tx.layer}}"
+        >
+          <h1 class="text-sm">#{{tx.layer}}</h1>
+          <img
+            class="w-[16px] mx-2"
+            src="/assets/images//url.svg"
+            alt="Layer {{tx.layer}}"
+          />
+        </a>
+
+        <a
+          class="flex flex-row hover:underline hover:pointer-events-auto"
+          href="/address/{{tx.principal}}"
+        >
+          <h1 class="text-sm font-mono">{{tx.principal_short}}</h1>
+          <img
+            class="w-[16px] mx-2"
+            src="/assets/images//url.svg"
+            alt="Principal {{tx.principal}}"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="flex flex-col items-end font-mono">
+      <p class="text-sm text-gray-400">Nonce: {{tx.nonce}}</p>
+      <p class="text-sm text-gray-400">Timestamp: {{tx.timestamp}}</p>
+    </div>
+  </div>
+</li>
 {% endfor %}

@@ -1,4 +1,4 @@
-use anyhow::Context;
+use crate::pages::{address::address_routes, home::home_routes, layer::layer_routes};
 use askama::Template;
 use axum::{
     http::StatusCode,
@@ -7,39 +7,43 @@ use axum::{
     Router,
 };
 use dotenv::dotenv;
+use sea_orm::{Database, DatabaseConnection};
 use tower_http::services::ServeDir;
 use tracing::info;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-
+mod db_entities;
 mod pages;
-use crate::pages::home::home_routes;
+
+#[derive(Clone)]
+struct AppState {
+    database: DatabaseConnection,
+}
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     dotenv().ok();
 
     tracing_subscriber::registry()
-        .with(
-            tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| "axum_static_web_server=debug".into()),
-        )
         .with(tracing_subscriber::fmt::layer())
         .init();
 
     info!("initializing router and assets");
 
-    let assets_path = std::env::current_dir().unwrap();
+    let conn = Database::connect("sqlite://state.sql?mode=ro").await?;
+    let state = AppState { database: conn };
 
-    let api_router = Router::new().route("/hello", get(say_hello));
+    let assets_path = std::env::current_dir()?;
 
     let app = Router::new()
-        .nest("/", home_routes())
         .layer(tower_livereload::LiveReloadLayer::new())
-        .nest("/api", api_router)
+        .nest("/", home_routes())
+        .nest("/layer", layer_routes())
+        .nest("/address", address_routes())
         .nest_service(
             "/assets",
             ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),
-        );
+        )
+        .with_state(state);
 
     // run it, make sure you handle parsing your environment variables properly!
     let port = std::env::var("PORT").unwrap().parse::<u16>().unwrap();
@@ -49,15 +53,9 @@ async fn main() -> anyhow::Result<()> {
 
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
 
-    axum::serve(listener, app)
-        .await
-        .context("error while starting server")?;
+    axum::serve(listener, app).await.unwrap();
 
     Ok(())
-}
-
-async fn say_hello() -> &'static str {
-    "Hello!"
 }
 
 struct HtmlTemplate<T>(T);
