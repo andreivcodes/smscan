@@ -187,6 +187,7 @@ async fn transactions_handler(State(state): State<AppState>) -> impl IntoRespons
                 .to_string(),
         })
         .collect();
+
     let template = TransactionsListTemplate { txs };
     HtmlTemplate(template)
 }
@@ -235,6 +236,7 @@ async fn rewards_handler(State(state): State<AppState>) -> impl IntoResponse {
             layer_reward: (reward.layer_reward.unwrap_or(0) as f32 / 1_000_000_000.0),
         })
         .collect();
+
     let template = RewardsListTemplate { rewards };
     HtmlTemplate(template)
 }

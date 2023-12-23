@@ -1,1 +1,24 @@
-<div>rewards tab</div>
+<div class="divide-y">
+  {% for reward in rewards %}
+
+  <div class="py-2">
+    <table>
+      <tr>
+        <td class="px-4 py-1">Coinbase:</td>
+        <td class="px-4 py-1 text-left">{{reward.coinbase}}</td>
+      </tr>
+
+      <tr>
+        <td class="px-4 py-1">Total Reward:</td>
+        <td class="px-4 py-1 text-left">{{reward.total_reward}} SMH</td>
+      </tr>
+
+      <tr>
+        <td class="px-4 py-1">Layer Reward:</td>
+        <td class="px-4 py-1 text-left">{{reward.layer_reward}} SMH</td>
+      </tr>
+    </table>
+  </div>
+
+  {% endfor %}
+</div>

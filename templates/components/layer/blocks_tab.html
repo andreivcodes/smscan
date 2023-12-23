@@ -1,1 +1,25 @@
-<div>blocks tab</div>
+<div class="divide-y py-1">
+  {% for block in blocks %}
+
+  <div class="py-2">
+    <table>
+      <tr>
+        <td class="px-4 py-1">Block Id:</td>
+        <td class="px-4 py-1 text-left">{{block.id}}</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-1">Valid:</td>
+        <td class="px-4 py-1 text-left">{{block.validity}}</td>
+      </tr>
+      <tr>
+        <td style="white-space: nowrap" class="px-4 py-1 align-top">
+          Block Data:
+        </td>
+        <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+          {{block.block_data}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  {% endfor %}
+</div>
