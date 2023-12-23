@@ -5,7 +5,19 @@
     <table>
       <tr>
         <td class="px-4 py-1">Coinbase:</td>
-        <td class="px-4 py-1 text-left">{{reward.coinbase}}</td>
+        <td class="px-4 py-1 text-left">
+          <a
+            class="flex flex-row hover:underline hover:pointer-events-auto"
+            href="/account/{{reward.coinbase}}"
+          >
+            <h1 class="text-sm font-mono">{{reward.coinbase}}</h1>
+            <img
+              class="w-[16px] mx-2"
+              src="/assets/images//url.svg"
+              alt="Principal {{reward.coinbase}}"
+            />
+          </a>
+        </td>
       </tr>
 
       <tr>

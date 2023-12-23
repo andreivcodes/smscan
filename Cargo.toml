@@ -29,3 +29,4 @@ sea-orm = { version = "0.12", features = [
     "with-uuid",
 ] }
 chrono = "0.4.31"
+hex = "0.4.3"

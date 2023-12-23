@@ -12,21 +12,13 @@ pub struct Model {
         nullable
     )]
     pub address: Vec<u8>,
+    pub balance: i64,
+    pub next_nonce: i64,
+    pub layer_updated: i64,
     #[sea_orm(column_type = "Binary(BlobSize::Blob(None))", nullable)]
-    pub balance: Vec<u8>,
+    pub template: Option<Vec<u8>>,
     #[sea_orm(column_type = "Binary(BlobSize::Blob(None))", nullable)]
-    pub next_nonce: Vec<u8>,
-    #[sea_orm(
-        primary_key,
-        auto_increment = false,
-        column_type = "Binary(BlobSize::Blob(None))",
-        nullable
-    )]
-    pub layer_updated: Vec<u8>,
-    #[sea_orm(column_type = "Binary(BlobSize::Blob(None))", nullable)]
-    pub template: Vec<u8>,
-    #[sea_orm(column_type = "Binary(BlobSize::Blob(None))", nullable)]
-    pub state: Vec<u8>,
+    pub state: Option<Vec<u8>>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

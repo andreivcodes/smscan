@@ -1,0 +1,92 @@
+<div>
+  <div class="divide-y">
+    {% for tx in txs %}
+
+    <div class="py-2">
+      <table>
+        <tr>
+          <td class="px-4 py-1">Block Id:</td>
+          <td class="px-4 py-1 text-left">{{tx.block}}</td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-1">Layer:</td>
+          <td class="px-4 py-1 text-left">
+            <a
+              class="flex flex-row hover:underline hover:pointer-events-auto"
+              href="/layer/{{tx.layer}}"
+            >
+              <h1 class="text-sm font-mono">{{tx.layer}}</h1>
+              <img
+                class="w-[16px] mx-2"
+                src="/assets/images//url.svg"
+                alt="Principal {{tx.layer}}"
+              />
+            </a>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-1">Principal:</td>
+          <td class="px-4 py-1 text-left">
+            <a
+              class="flex flex-row hover:underline hover:pointer-events-auto"
+              href="/account/{{tx.principal}}"
+            >
+              <h1 class="text-sm font-mono">{{tx.principal}}</h1>
+              <img
+                class="w-[16px] mx-2"
+                src="/assets/images//url.svg"
+                alt="Principal {{tx.principal}}"
+              />
+            </a>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-1">Nonce:</td>
+          <td class="px-4 py-1 text-left">{{tx.nonce}}</td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-1">Timestamp:</td>
+          <td class="px-4 py-1 text-left">{{tx.timestamp}}</td>
+        </tr>
+
+        <tr>
+          <td style="white-space: nowrap" class="px-4 py-1 align-top">
+            Header:
+          </td>
+          <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+            {{tx.header}}
+          </td>
+        </tr>
+
+        <tr>
+          <td style="white-space: nowrap" class="px-4 py-1 align-top">Data:</td>
+          <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+            {{tx.tx}}
+          </td>
+        </tr>
+
+        <tr>
+          <td style="white-space: nowrap" class="px-4 py-1 align-top">
+            Result:
+          </td>
+          <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+            {{tx.result}}
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    {% endfor %}
+  </div>
+  {% if txs_count > 1 %}
+  <div
+    hx-trigger="intersect once"
+    hx-get="/account/{{id}}/transactions?skip={{skip}}"
+    hx-swap="beforebegin"
+  ></div>
+  {% endif %}
+</div>

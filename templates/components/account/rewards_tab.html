@@ -1,0 +1,45 @@
+<div>
+  <div class="divide-y">
+    {% for reward in rewards %}
+
+    <div class="py-2">
+      <table>
+        <tr>
+          <td class="px-4 py-1">Layer:</td>
+          <td class="px-4 py-1 text-left">
+            <a
+              class="flex flex-row hover:underline hover:pointer-events-auto"
+              href="/layer/{{reward.layer}}"
+            >
+              <h1 class="text-sm font-mono">{{reward.layer}}</h1>
+              <img
+                class="w-[16px] mx-2"
+                src="/assets/images//url.svg"
+                alt="Principal {{reward.layer}}"
+              />
+            </a>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-1">Total Reward:</td>
+          <td class="px-4 py-1 text-left">{{reward.total_reward}} SMH</td>
+        </tr>
+
+        <tr>
+          <td class="px-4 py-1">Layer Reward:</td>
+          <td class="px-4 py-1 text-left">{{reward.layer_reward}} SMH</td>
+        </tr>
+      </table>
+    </div>
+
+    {% endfor %}
+  </div>
+  {% if rewards_count > 1 %}
+  <div
+    hx-trigger="intersect once"
+    hx-get="/account/{{id}}/rewards?skip={{skip}}"
+    hx-swap="beforebegin"
+  ></div>
+  {% endif %}
+</div>

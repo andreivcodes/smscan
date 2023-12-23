@@ -10,7 +10,19 @@
 
       <tr>
         <td class="px-4 py-1">Principal:</td>
-        <td class="px-4 py-1 text-left">{{tx.principal}}</td>
+        <td class="px-4 py-1 text-left">
+          <a
+            class="flex flex-row hover:underline hover:pointer-events-auto"
+            href="/account/{{tx.principal}}"
+          >
+            <h1 class="text-sm font-mono">{{tx.principal}}</h1>
+            <img
+              class="w-[16px] mx-2"
+              src="/assets/images//url.svg"
+              alt="Principal {{tx.principal}}"
+            />
+          </a>
+        </td>
       </tr>
 
       <tr>
