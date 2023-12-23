@@ -1,0 +1,119 @@
+<div class="w-full flex justify-center">
+  <div class="w-4/5 flex flex-col">
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+      <ul
+        class="flex flex-wrap -mb-px text-sm font-medium text-center"
+        id="default-tab"
+        data-tabs-toggle="#default-tab-content"
+        role="tablist"
+      >
+        <li class="me-2" role="presentation">
+          <button
+            class="inline-block p-4 border-b-2 rounded-t-lg"
+            id="layer-tab"
+            data-tabs-target="#layer"
+            type="button"
+            role="tab"
+            aria-controls="layer"
+            aria-selected="false"
+          >
+            Layer
+          </button>
+        </li>
+        <li class="me-2" role="presentation">
+          <button
+            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            id="blocks-tab"
+            data-tabs-target="#blocks"
+            type="button"
+            role="tab"
+            aria-controls="blocks"
+            aria-selected="false"
+          >
+            Blocks
+          </button>
+        </li>
+        <li class="me-2" role="presentation">
+          <button
+            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            id="transactions-tab"
+            data-tabs-target="#transactions"
+            type="button"
+            role="tab"
+            aria-controls="transactions"
+            aria-selected="false"
+          >
+            Transactions
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            id="rewards-tab"
+            data-tabs-target="#rewards"
+            type="button"
+            role="tab"
+            aria-controls="rewards"
+            aria-selected="false"
+          >
+            Rewards
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div id="tab-content" role="tabpanel" class="tab-content">
+      <div
+        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+        id="layer"
+        role="tabpanel"
+        aria-labelledby="layer-tab"
+      >
+        <div
+          class="text-sm text-gray-500 dark:text-gray-400"
+          hx-get="/layer/{{id}}/layer"
+          hx-trigger="load"
+          hx-swap="innerHTML"
+        ></div>
+      </div>
+      <div
+        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+        id="blocks"
+        role="tabpanel"
+        aria-labelledby="blocks-tab"
+      >
+        <div
+          class="text-sm text-gray-500 dark:text-gray-400"
+          hx-get="/layer/{{id}}/blocks"
+          hx-trigger="load"
+          hx-swap="innerHTML"
+        ></div>
+      </div>
+      <div
+        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+        id="transactions"
+        role="tabpanel"
+        aria-labelledby="transactions-tab"
+      >
+        <div
+          class="text-sm text-gray-500 dark:text-gray-400"
+          hx-get="/layer/{{id}}/transactions"
+          hx-trigger="load"
+          hx-swap="innerHTML"
+        ></div>
+      </div>
+      <div
+        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+        id="rewards"
+        role="tabpanel"
+        aria-labelledby="rewards-tab"
+      >
+        <div
+          class="text-sm text-gray-500 dark:text-gray-400"
+          hx-get="/layer/{{id}}/rewards"
+          hx-trigger="load"
+          hx-swap="innerHTML"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
