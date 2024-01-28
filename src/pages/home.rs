@@ -1,4 +1,5 @@
 use crate::{
+    components::global_state::global_state_handler,
     db_entities::{layers, rewards, transactions},
     AppState, HtmlTemplate,
 };
@@ -13,6 +14,7 @@ pub fn home_routes() -> Router<AppState> {
         .route("/home/layers", get(layers_handler))
         .route("/home/transactions", get(transactions_handler))
         .route("/home/rewards", get(rewards_handler))
+        .route("/home/global_state", get(global_state_handler))
         .route("/", get(page))
 }
 

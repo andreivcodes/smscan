@@ -10,11 +10,12 @@ use sea_orm::{Database, DatabaseConnection};
 use tower_http::services::ServeDir;
 use tracing::info;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+pub mod components;
 mod db_entities;
 mod pages;
 
 #[derive(Clone)]
-struct AppState {
+pub struct AppState {
     database: DatabaseConnection,
 }
 
