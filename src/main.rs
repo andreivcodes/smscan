@@ -29,7 +29,7 @@ async fn main() -> anyhow::Result<()> {
 
     info!("initializing router and assets");
 
-    let conn = Database::connect("sqlite://state.sql?mode=ro").await?;
+    let conn = Database::connect("sqlite://node-data/state.sql?mode=ro").await?;
     let state = AppState { database: conn };
 
     let assets_path = std::env::current_dir()?;
@@ -49,7 +49,7 @@ async fn main() -> anyhow::Result<()> {
     let port = std::env::var("PORT").unwrap().parse::<u16>().unwrap();
     let addr = std::net::SocketAddr::from(([0, 0, 0, 0], port));
 
-    info!("router initialized, not listening on port {}", port);
+    info!("router initialized, now listening on port {}", port);
 
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
 

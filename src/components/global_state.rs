@@ -86,7 +86,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_highest: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "192.168.7.10:9092",
+            "go-spacemesh:9092",
             "spacemesh.v1.ActivationService.Highest",
         ])
         .output()
@@ -100,7 +100,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_genesistime: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "192.168.7.10:9092",
+            "go-spacemesh:9092",
             "spacemesh.v1.MeshService.GenesisTime",
         ])
         .output()
@@ -114,7 +114,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_currentlayer: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "192.168.7.10:9092",
+            "go-spacemesh:9092",
             "spacemesh.v1.MeshService.CurrentLayer",
         ])
         .output()
@@ -128,7 +128,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_currentepoch: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "192.168.7.10:9092",
+            "go-spacemesh:9092",
             "spacemesh.v1.MeshService.CurrentEpoch",
         ])
         .output()
@@ -142,7 +142,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_epochnumlayers: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "192.168.7.10:9092",
+            "go-spacemesh:9092",
             "spacemesh.v1.MeshService.EpochNumLayers",
         ])
         .output()
@@ -156,7 +156,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_layerduration: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "192.168.7.10:9092",
+            "go-spacemesh:9092",
             "spacemesh.v1.MeshService.LayerDuration",
         ])
         .output()

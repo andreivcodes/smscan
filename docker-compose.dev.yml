@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  go-spacemesh:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    volumes:
+      - spacemesh-data:/smscan/go-spacemesh/build/node-data
+    
+  smscan:
+    build:
+      context: .
+      dockerfile: Dockerfile.smscan
+    volumes:
+      - spacemesh-data:/app/node-data
+    ports:
+      - "3000:3000"
+    depends_on:
+      - go-spacemesh
+
+volumes:
+  spacemesh-data:

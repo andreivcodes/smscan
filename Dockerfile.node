@@ -1,0 +1,38 @@
+FROM golang:1.21.5
+
+RUN apt-get update && apt-get install -y \
+  git \
+  git-lfs \
+  make \
+  curl \
+  build-essential \
+  unzip \
+  wget \
+  ocl-icd-opencl-dev \
+  ocl-icd-libopencl1
+
+RUN git-lfs install
+
+WORKDIR /smscan
+
+RUN git clone --progress --verbose https://github.com/spacemeshos/go-spacemesh
+
+WORKDIR /smscan/go-spacemesh
+
+RUN git fetch --all --tags
+RUN git checkout tags/v1.3.5-hotfix2
+
+RUN make get-libs
+RUN make install
+RUN make build
+
+WORKDIR /smscan/go-spacemesh/build
+
+RUN wget https://configs.spacemesh.network/config.mainnet.json
+
+RUN chmod +x go-spacemesh
+
+EXPOSE 9092
+EXPOSE 9093
+
+CMD ./go-spacemesh --config config.mainnet.json --smeshing-start=false --data-folder ./node-data --smeshing-opts-datadir ./node-data/post-data

@@ -1,0 +1,49 @@
+# Builder stage
+FROM rust:latest AS builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN cargo build --release
+
+# Use a multi-stage build to detect the target architecture and download the appropriate grpcurl version
+FROM alpine AS grpcurl-downloader
+
+# Detect the build architecture
+ARG BUILDARCH
+RUN echo "Build architecture: $BUILDARCH"
+
+# Download and install grpcurl based on the build architecture
+ARG GRPCURL_VERSION=1.8.9
+
+ARG GRPCURL_VERSION
+ARG BUILDARCH
+
+WORKDIR /grpcurl
+
+RUN apk add --no-cache wget
+RUN wget https://github.com/fullstorydev/grpcurl/releases/download/v${GRPCURL_VERSION}/grpcurl_${GRPCURL_VERSION}_linux_${BUILDARCH}.tar.gz \
+    && tar -zxvf grpcurl_${GRPCURL_VERSION}_linux_${BUILDARCH}.tar.gz -C /usr/local/bin/ \
+    && rm grpcurl_${GRPCURL_VERSION}_linux_${BUILDARCH}.tar.gz
+
+# Runner stage
+FROM rust:latest AS runner
+
+# Install dependencies
+RUN apt-get update && apt-get install -y wget
+
+# Copy grpcurl binary from grpcurl-downloader stage
+COPY --from=grpcurl-downloader /usr/local/bin/grpcurl /usr/local/bin/
+
+# Copy assets and binary from builder stage
+COPY --from=builder /app/assets /app/assets
+COPY --from=builder /app/target/release/smscan /app
+
+ENV PORT=3000
+
+WORKDIR /app
+
+EXPOSE ${PORT}
+
+CMD ["/app/smscan"]

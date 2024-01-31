@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  go-spacemesh:
+    image: andreivcodes/smscan-node:amd64
+    volumes:
+      - spacemesh-data:/smscan/go-spacemesh/build/node-data
+    networks:
+      - smscan-network
+    
+  smscan:
+    image: andreivcodes/smscan-app:amd64
+    volumes:
+      - spacemesh-data:/app/node-data
+    ports:
+      - "3636:3000"
+    networks:
+      - smscan-network
+    depends_on:
+      - go-spacemesh
+
+volumes:
+  spacemesh-data:
+
+networks:
+  smscan-network:
+    driver: bridge
