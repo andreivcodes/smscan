@@ -1,6 +1,4 @@
 node_modules
 target
-state.sql
-state.sql-shm
-state.sql-wal
+node-data
 .DS_Store
