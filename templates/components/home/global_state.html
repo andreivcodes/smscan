@@ -1,114 +1,51 @@
-<table>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Highest ATX:
-      </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
+<div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-zinc-600">
+  <div class="rounded-md border-2 p-2">
+    <div class="flex flex-row items-center justify-between pb-2 space-y-0">
+      <p class="text-sm font-medium">Highest ATX:</p>
+    </div>
+    <div>
+      <div class="text-xl font-bold truncate text-ellipsis break-all">
         {{highest_atx}}
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Previous ATX:
-      </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
+      </div>
+      <p class="text-xs text-zinc-500 truncate text-ellipsis break-all">
         {{previous_atx}}
       </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Genesis Time:
+    </div>
+  </div>
+
+  <div class="rounded-md border-2 p-2">
+    <div class="flex flex-row items-center justify-between pb-2 space-y-0">
+      <p class="text-sm font-medium">Genesis Time:</p>
+    </div>
+    <div>
+      <div class="text-2xl font-bold">{{genesis_time}}</div>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400">
+        Unix timestamp: {{genesis_timestamp}}
       </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
-        {{genesis_time}}
+    </div>
+  </div>
+
+  <div class="rounded-md border-2 p-2">
+    <div class="flex flex-row items-center justify-between pb-2 space-y-0">
+      <p class="text-sm font-medium">Current Epoch:</p>
+    </div>
+    <div>
+      <div class="text-2xl font-bold">{{current_epoch}}</div>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400">
+        Layer: {{current_layer}}
       </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Current Layer:
+    </div>
+  </div>
+
+  <div class="rounded-md border-2 p-2">
+    <div class="flex flex-row items-center justify-between pb-2 space-y-0">
+      <p class="text-sm font-medium">Layer Duration:</p>
+    </div>
+    <div>
+      <div class="text-2xl font-bold">{{layer_duration}} seconds</div>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400">
+        {{epoch_num_layers}} layers every epoch
       </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
-        {{current_layer}}
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Current Epoch:
-      </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
-        {{current_epoch}}
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Epoch Num Layers:
-      </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
-        {{epoch_num_layers}}
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-      >
-        Layer Duration:
-      </p>
-    </td>
-    <td>
-      <p
-        class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-      >
-        {{layer_duration}}
-      </p>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+</div>

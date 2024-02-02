@@ -1,127 +1,47 @@
 <div class="bg-white">
   <div class="p-6 flex flex-col">
     <div class="p-2 lg:p-6">
-      <div class="flex flex-col justify-between border-2 p-2 rounded-md w-full">
-        <h1 class="text-zinc-600 font-bold">Global state</h1>
+      <div class="flex flex-col justify-between w-full">
         <div
           hx-swap="innerHTML"
           hx-get="/home/global_state"
           hx-trigger="load, every 10s"
         >
-          <table>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Highest ATX:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Previous ATX:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Genesis Time:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Current Layer:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Current Epoch:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Epoch Num Layers:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden pr-2"
-                >
-                  Layer Duration:
-                </p>
-              </td>
-              <td>
-                <p
-                  class="text-sm text-gray-500 dark:text-gray-40 text-ellipsis overflow-hidden"
-                >
-                  loading...
-                </p>
-              </td>
-            </tr>
-          </table>
+          <div
+            class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-zinc-600"
+          >
+            <div class="rounded-md border-2 p-2">
+              <div
+                class="flex flex-row items-center justify-between pb-2 space-y-0"
+              >
+                <p class="text-sm font-medium">Highest ATX:</p>
+              </div>
+            </div>
+
+            <div class="rounded-md border-2 p-2">
+              <div
+                class="flex flex-row items-center justify-between pb-2 space-y-0"
+              >
+                <p class="text-sm font-medium">Genesis Time:</p>
+              </div>
+            </div>
+
+            <div class="rounded-md border-2 p-2">
+              <div
+                class="flex flex-row items-center justify-between pb-2 space-y-0"
+              >
+                <p class="text-sm font-medium">Current Epoch:</p>
+              </div>
+            </div>
+
+            <div class="rounded-md border-2 p-2">
+              <div
+                class="flex flex-row items-center justify-between pb-2 space-y-0"
+              >
+                <p class="text-sm font-medium">Layer Duration:</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

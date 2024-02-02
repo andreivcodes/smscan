@@ -1,6 +1,6 @@
 <div class="w-full flex justify-center">
   <div class="w-4/5 flex flex-col">
-    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+    <div class="mb-4 border-b border-zinc-200 dark:border-zinc-700">
       <ul
         class="flex flex-wrap -mb-px text-sm font-medium text-center"
         id="default-tab"
@@ -23,7 +23,7 @@
 
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            class="inline-block p-4 border-b-2 rounded-t-lg"
             id="transactions-tab"
             data-tabs-target="#transactions"
             type="button"
@@ -36,7 +36,7 @@
         </li>
         <li role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            class="inline-block p-4 border-b-2 rounded-t-lg"
             id="rewards-tab"
             data-tabs-target="#rewards"
             type="button"
@@ -57,7 +57,7 @@
         aria-labelledby="account-tab"
       >
         <div
-          class="text-sm text-gray-500 dark:text-gray-400"
+          class="text-sm text-zinc-800 dark:text-zinc-400"
           hx-get="/account/{{id}}/account"
           hx-trigger="revealed"
           hx-swap="innerHTML"
@@ -70,7 +70,7 @@
         aria-labelledby="transactions-tab"
       >
         <div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">
+          <div class="text-sm text-zinc-800 dark:text-zinc-400">
             <div
               hx-trigger="load"
               hx-get="/account/{{id}}/transactions?skip=0"
@@ -89,7 +89,7 @@
         aria-labelledby="rewards-tab"
       >
         <div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">
+          <div class="text-sm text-zinc-800 dark:text-zinc-400">
             <div
               hx-trigger="load"
               hx-get="/account/{{id}}/rewards?skip=0"

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" style="width: 100%; margin: 0 auto;">
+<html lang="en" style="width: 100%; margin: 0 auto">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+      rel="stylesheet"
+    />
     <link href="/assets/main.css" rel="stylesheet" />
     <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
 
@@ -23,7 +27,9 @@
     "
   >
     {% include "components/header.html" %}
-    <div>{% block content %}{% endblock %}</div> 
+    <div>{% block content %}{% endblock %}</div>
     {% include "components/footer.html" %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>
 </html>

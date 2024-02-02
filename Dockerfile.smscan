@@ -41,6 +41,7 @@ COPY --from=builder /app/assets /app/assets
 COPY --from=builder /app/target/release/smscan /app
 
 ENV PORT=3000
+ENV NODE_HOST=192.168.7.10:9092
 
 WORKDIR /app
 

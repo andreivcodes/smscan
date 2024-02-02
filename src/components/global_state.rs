@@ -1,6 +1,7 @@
 use askama::Template;
 use axum::{extract::State, response::IntoResponse};
 use base64::{engine::general_purpose, Engine};
+use chrono::{DateTime, NaiveDateTime, Utc};
 use serde::{Deserialize, Serialize};
 use tokio::process::Command;
 
@@ -11,6 +12,7 @@ use crate::{AppState, HtmlTemplate};
 struct GlobalStateTemplate {
     highest_atx: String,
     previous_atx: String,
+    genesis_timestamp: String,
     genesis_time: String,
     current_layer: u64,
     current_epoch: u64,
@@ -83,10 +85,12 @@ struct Coinbase {
 }
 
 pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoResponse {
+    let node_host = std::env::var("NODE_HOST").unwrap();
+
     let grpcurl_highest: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "go-spacemesh:9092",
+            node_host.as_str(),
             "spacemesh.v1.ActivationService.Highest",
         ])
         .output()
@@ -100,7 +104,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_genesistime: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "go-spacemesh:9092",
+            node_host.as_str(),
             "spacemesh.v1.MeshService.GenesisTime",
         ])
         .output()
@@ -114,7 +118,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_currentlayer: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "go-spacemesh:9092",
+            node_host.as_str(),
             "spacemesh.v1.MeshService.CurrentLayer",
         ])
         .output()
@@ -128,7 +132,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_currentepoch: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "go-spacemesh:9092",
+            node_host.as_str(),
             "spacemesh.v1.MeshService.CurrentEpoch",
         ])
         .output()
@@ -142,7 +146,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_epochnumlayers: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "go-spacemesh:9092",
+            node_host.as_str(),
             "spacemesh.v1.MeshService.EpochNumLayers",
         ])
         .output()
@@ -156,7 +160,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let grpcurl_layerduration: Vec<u8> = Command::new("grpcurl")
         .args([
             "-plaintext",
-            "go-spacemesh:9092",
+            node_host.as_str(),
             "spacemesh.v1.MeshService.LayerDuration",
         ])
         .output()
@@ -170,7 +174,16 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let template = GlobalStateTemplate {
         highest_atx: base64_to_hex(highest_result.atx.id.id),
         previous_atx: base64_to_hex(highest_result.atx.prevAtx.id),
-        genesis_time: genesis_time_result.unixtime.value,
+        genesis_timestamp: genesis_time_result.unixtime.value.clone(),
+        genesis_time: DateTime::<Utc>::from_naive_utc_and_offset(
+            NaiveDateTime::from_timestamp_millis(
+                genesis_time_result.unixtime.value.parse::<i64>().unwrap() * 1000,
+            )
+            .unwrap(),
+            Utc,
+        )
+        .format("%Y-%m-%d %H:%M:%S")
+        .to_string(),
         current_layer: current_layer_result.layernum.number,
         current_epoch: current_epoch_result.epochnum.number,
         epoch_num_layers: epoch_num_layers_result.numlayers.number,
