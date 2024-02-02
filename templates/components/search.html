@@ -1,14 +1,12 @@
 <div class="bg-white py-2 px-8 w-full max-w-[600px] mx-auto">
   <div class="relative">
     <input
-      type="text"
-      id="searchInput"
-      placeholder="Search layer, block, transaction, or coinbase"
-      class="w-full max-w-[600px] pl-8 pr-4 py-2 rounded-md border focus:ring focus:ring-indigo-300 focus:outline-none"
+      type="search"
+      name="input"
+      placeholder="Search layer or account"
+      class="form-control w-full max-w-[600px] py-2 rounded-md border focus:ring focus:ring-indigo-300 focus:outline-none"
+      hx-get="/search"
+      hx-trigger="search"
     />
-    <div
-      class="absolute top-1/2 left-4 transform -translate-y-1/2 text-zinc-400"
-    ></div>
-  </div>
   </div>
 </div>

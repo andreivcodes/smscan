@@ -1,7 +1,7 @@
 <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-zinc-600">
   <div class="rounded-md border-2 p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <p class="text-sm font-medium">Highest ATX:</p>
+      <h3 class="font-medium">Highest ATX:</h3>
     </div>
     <div>
       <div class="text-xl font-bold truncate text-ellipsis break-all">
@@ -15,35 +15,31 @@
 
   <div class="rounded-md border-2 p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <p class="text-sm font-medium">Genesis Time:</p>
+      <h3 class="font-medium">Genesis Time:</h3>
     </div>
     <div>
       <div class="text-2xl font-bold">{{genesis_time}}</div>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400">
-        Unix timestamp: {{genesis_timestamp}}
-      </p>
+      <p class="text-xs text-zinc-500">Unix timestamp: {{genesis_timestamp}}</p>
     </div>
   </div>
 
   <div class="rounded-md border-2 p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <p class="text-sm font-medium">Current Epoch:</p>
+      <h3 class="font-medium">Current Epoch:</h3>
     </div>
     <div>
       <div class="text-2xl font-bold">{{current_epoch}}</div>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400">
-        Layer: {{current_layer}}
-      </p>
+      <p class="text-xs text-zinc-500">Layer: {{current_layer}}</p>
     </div>
   </div>
 
   <div class="rounded-md border-2 p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <p class="text-sm font-medium">Layer Duration:</p>
+      <h3 class="font-medium">Layer Duration:</h3>
     </div>
     <div>
       <div class="text-2xl font-bold">{{layer_duration}} seconds</div>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400">
+      <p class="text-xs text-zinc-500">
         {{epoch_num_layers}} layers every epoch
       </p>
     </div>

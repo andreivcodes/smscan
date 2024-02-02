@@ -4,13 +4,15 @@
   <div class="py-2">
     <table>
       <tr>
-        <td class="px-4 py-1">Block Id:</td>
-        <td class="px-4 py-1 text-left break-all">{{tx.block}}</td>
+        <td class="px-4 py-1 text-zinc-700">Block Id:</td>
+        <td class="px-4 py-1 text-left break-all text-zinc-500">
+          {{tx.block}}
+        </td>
       </tr>
 
       <tr>
-        <td class="px-4 py-1">Principal:</td>
-        <td class="px-4 py-1 text-left">
+        <td class="px-4 py-1 text-zinc-700">Principal:</td>
+        <td class="px-4 py-1 text-left text-zinc-500">
           <a
             class="flex flex-row hover:underline hover:pointer-events-auto"
             href="/account/{{tx.principal}}"
@@ -26,32 +28,56 @@
       </tr>
 
       <tr>
-        <td class="px-4 py-1">Nonce:</td>
-        <td class="px-4 py-1 text-left">{{tx.nonce}}</td>
+        <td class="px-4 py-1 text-zinc-700">Nonce:</td>
+        <td class="px-4 py-1 text-left text-zinc-500">{{tx.nonce}}</td>
       </tr>
 
       <tr>
-        <td class="px-4 py-1">Timestamp:</td>
-        <td class="px-4 py-1 text-left">{{tx.timestamp}}</td>
+        <td class="px-4 py-1 text-zinc-700">Timestamp:</td>
+        <td class="px-4 py-1 text-left text-zinc-500">{{tx.timestamp}}</td>
       </tr>
 
       <tr>
-        <td style="white-space: nowrap" class="px-4 py-1 align-top">Header:</td>
-        <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+        <td
+          style="white-space: nowrap"
+          class="px-4 py-1 align-top text-zinc-700"
+        >
+          Header:
+        </td>
+        <td
+          style="word-break: break-all"
+          class="px-4 py-1 text-sm text-left text-zinc-500"
+        >
           {{tx.header}}
         </td>
       </tr>
 
       <tr>
-        <td style="white-space: nowrap" class="px-4 py-1 align-top">Data:</td>
-        <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+        <td
+          style="white-space: nowrap"
+          class="px-4 py-1 align-top text-zinc-700"
+        >
+          Data:
+        </td>
+        <td
+          style="word-break: break-all"
+          class="px-4 py-1 text-sm text-left text-zinc-500"
+        >
           {{tx.tx}}
         </td>
       </tr>
 
       <tr>
-        <td style="white-space: nowrap" class="px-4 py-1 align-top">Result:</td>
-        <td style="word-break: break-all" class="px-4 py-1 text-sm text-left">
+        <td
+          style="white-space: nowrap"
+          class="px-4 py-1 align-top text-zinc-700"
+        >
+          Result:
+        </td>
+        <td
+          style="word-break: break-all"
+          class="px-4 py-1 text-sm text-left text-zinc-500"
+        >
           {{tx.result}}
         </td>
       </tr>
