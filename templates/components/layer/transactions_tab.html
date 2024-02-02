@@ -4,17 +4,17 @@
   <div class="py-2">
     <table>
       <tr>
-        <td class="px-4 py-1 text-zinc-700">Block Id:</td>
+        <td class="px-4 py-1 text-zinc-700 align-top">Block Id:</td>
         <td class="px-4 py-1 text-left break-all text-zinc-500">
           {{tx.block}}
         </td>
       </tr>
 
       <tr>
-        <td class="px-4 py-1 text-zinc-700">Principal:</td>
+        <td class="px-4 py-1 text-zinc-700 align-top">Principal:</td>
         <td class="px-4 py-1 text-left text-zinc-500">
           <a
-            class="flex flex-row hover:underline hover:pointer-events-auto"
+            class="flex flex-row hover:underline hover:pointer-events-auto break-all"
             href="/account/{{tx.principal}}"
           >
             <h1 class="text-sm font-mono break-all">{{tx.principal}}</h1>
@@ -28,12 +28,12 @@
       </tr>
 
       <tr>
-        <td class="px-4 py-1 text-zinc-700">Nonce:</td>
+        <td class="px-4 py-1 text-zinc-700 align-top">Nonce:</td>
         <td class="px-4 py-1 text-left text-zinc-500">{{tx.nonce}}</td>
       </tr>
 
       <tr>
-        <td class="px-4 py-1 text-zinc-700">Timestamp:</td>
+        <td class="px-4 py-1 text-zinc-700 align-top">Timestamp:</td>
         <td class="px-4 py-1 text-left text-zinc-500">{{tx.timestamp}}</td>
       </tr>
 
@@ -46,7 +46,7 @@
         </td>
         <td
           style="word-break: break-all"
-          class="px-4 py-1 text-sm text-left text-zinc-500"
+          class="px-4 py-1 text-sm text-left text-zinc-500 break-all"
         >
           {{tx.header}}
         </td>
@@ -61,7 +61,7 @@
         </td>
         <td
           style="word-break: break-all"
-          class="px-4 py-1 text-sm text-left text-zinc-500"
+          class="px-4 py-1 text-sm text-left text-zinc-500 break-all"
         >
           {{tx.tx}}
         </td>
@@ -76,7 +76,7 @@
         </td>
         <td
           style="word-break: break-all"
-          class="px-4 py-1 text-sm text-left text-zinc-500"
+          class="px-4 py-1 text-sm text-left text-zinc-500 break-all"
         >
           {{tx.result}}
         </td>
