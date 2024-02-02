@@ -7,7 +7,7 @@ edition = "2021"
 anyhow = "=1.0.79"
 askama = "=0.12.1"
 axum = "=0.7.4"
-tokio = { version = "=1.35.1", features = ["full"] }
+tokio = { version = "=1.36.0", features = ["full"] }
 tracing = "=0.1.40"
 tracing-subscriber = { version = "=0.3.18", features = ["env-filter"] }
 tower = { version = "=0.4.13", features = ["util"] }
