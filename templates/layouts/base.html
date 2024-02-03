@@ -31,16 +31,10 @@
     {% block head %}{% endblock %}
   </head>
   <body
-    style="
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    "
+    class="bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 min-h-[100vh] flex flex-col w-full"
   >
-    {% include "components/header.html" %}
-    <div>{% block content %}{% endblock %}</div>
-    {% include "components/footer.html" %}
+    {% include "components/header.html" %} {% block content %}{% endblock %} {%
+    include "components/footer.html" %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>

@@ -1,15 +1,15 @@
 <div class="w-full flex justify-center">
   <div class="w-4/5 flex flex-col">
-    <div class="mb-4 border-b">
+    <div class="mb-4 border-b border-zinc-100 dark:border-zinc-400">
       <ul
-        class="flex flex-wrap -mb-px text-sm font-medium text-center"
+        class="flex flex-wrap text-sm font-medium text-center border-zinc-400 dark:border-zinc-400"
         id="default-tab"
         data-tabs-toggle="#default-tab-content"
         role="tablist"
       >
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="layer-tab"
             data-tabs-target="#layer"
             type="button"
@@ -23,7 +23,7 @@
 
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="blocks-tab"
             data-tabs-target="#blocks"
             type="button"
@@ -36,7 +36,7 @@
         </li>
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="transactions-tab"
             data-tabs-target="#transactions"
             type="button"
@@ -49,7 +49,7 @@
         </li>
         <li role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="rewards-tab"
             data-tabs-target="#rewards"
             type="button"
@@ -70,7 +70,7 @@
         aria-labelledby="layer-tab"
       >
         <div
-          class="text-sm text-zinc-800"
+          class="text-sm"
           hx-get="/layer/{{id}}/layer"
           hx-trigger="load"
           hx-swap="innerHTML"
@@ -83,7 +83,7 @@
         aria-labelledby="blocks-tab"
       >
         <div
-          class="text-sm text-zinc-800"
+          class="text-sm"
           hx-get="/layer/{{id}}/blocks"
           hx-trigger="load"
           hx-swap="innerHTML"
@@ -96,7 +96,7 @@
         aria-labelledby="transactions-tab"
       >
         <div
-          class="text-sm text-zinc-800"
+          class="text-sm"
           hx-get="/layer/{{id}}/transactions"
           hx-trigger="load"
           hx-swap="innerHTML"
@@ -109,7 +109,7 @@
         aria-labelledby="rewards-tab"
       >
         <div
-          class="text-sm text-zinc-800"
+          class="text-sm"
           hx-get="/layer/{{id}}/rewards"
           hx-trigger="load"
           hx-swap="innerHTML"

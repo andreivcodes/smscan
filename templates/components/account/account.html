@@ -1,15 +1,15 @@
 <div class="w-full flex justify-center">
   <div class="w-4/5 flex flex-col">
-    <div class="mb-4 border-b">
+    <div class="mb-4 border-b border-zinc-100 dark:border-zinc-400">
       <ul
-        class="flex flex-wrap -mb-px text-sm font-medium text-center"
+        class="flex flex-wrap text-sm font-medium text-center border-zinc-400 dark:border-zinc-400"
         id="default-tab"
         data-tabs-toggle="#default-tab-content"
         role="tablist"
       >
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="account-tab"
             data-tabs-target="#account"
             type="button"
@@ -23,7 +23,7 @@
 
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="transactions-tab"
             data-tabs-target="#transactions"
             type="button"
@@ -36,7 +36,7 @@
         </li>
         <li role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 border-b-2 rounded-t-lg dark:text-blue-500 dark:border-blue-500"
             id="rewards-tab"
             data-tabs-target="#rewards"
             type="button"
@@ -57,7 +57,7 @@
         aria-labelledby="account-tab"
       >
         <div
-          class="text-sm text-zinc-800"
+          class="text-sm"
           hx-get="/account/{{id}}/account"
           hx-trigger="revealed"
           hx-swap="innerHTML"
@@ -70,7 +70,7 @@
         aria-labelledby="transactions-tab"
       >
         <div>
-          <div class="text-sm text-zinc-800">
+          <div class="text-sm">
             <div
               hx-trigger="load"
               hx-get="/account/{{id}}/transactions?skip=0"
@@ -89,7 +89,7 @@
         aria-labelledby="rewards-tab"
       >
         <div>
-          <div class="text-sm text-zinc-800">
+          <div class="text-sm">
             <div
               hx-trigger="load"
               hx-get="/account/{{id}}/rewards?skip=0"
