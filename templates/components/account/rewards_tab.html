@@ -5,13 +5,13 @@
     <div class="py-2">
       <table>
         <tr>
-          <td class="px-4 py-1 align-top">Layer:</td>
+          <td class="px-4 py-1 align-top"><h3>Layer:</h3></td>
           <td class="px-4 py-1 text-left">
             <a
               class="flex flex-row hover:underline hover:pointer-events-auto"
               href="/layer/{{reward.layer}}"
             >
-              <h1 class="text-sm font-mono">{{reward.layer}}</h1>
+              <h1 class="text-sm font-mono"><p>{{reward.layer}}</p></h1>
               <svg
                 class="w-[16px] mx-2"
                 viewBox="0 0 30 30"
@@ -27,13 +27,17 @@
         </tr>
 
         <tr>
-          <td class="px-4 py-1">Total Reward:</td>
-          <td class="px-4 py-1 text-left">{{reward.total_reward}} SMH</td>
+          <td class="px-4 py-1"><h3>Total Reward:</h3></td>
+          <td class="px-4 py-1 text-left">
+            <p>{{reward.total_reward}} SMH</p>
+          </td>
         </tr>
 
         <tr>
-          <td class="px-4 py-1 align-top">Layer Reward:</td>
-          <td class="px-4 py-1 text-left">{{reward.layer_reward}} SMH</td>
+          <td class="px-4 py-1 align-top"><h3>Layer Reward:</h3></td>
+          <td class="px-4 py-1 text-left">
+            <p>{{reward.layer_reward}} SMH</p>
+          </td>
         </tr>
       </table>
     </div>

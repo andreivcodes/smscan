@@ -9,7 +9,7 @@
       >
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 rounded-t-lg"
             id="account-tab"
             data-tabs-target="#account"
             type="button"
@@ -17,13 +17,13 @@
             aria-controls="account"
             aria-selected="false"
           >
-            Account
+            <h2>Account</h2>
           </button>
         </li>
 
         <li class="me-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 rounded-t-lg"
             id="transactions-tab"
             data-tabs-target="#transactions"
             type="button"
@@ -31,12 +31,12 @@
             aria-controls="transactions"
             aria-selected="false"
           >
-            Transactions
+            <h2>Transactions</h2>
           </button>
         </li>
         <li role="presentation">
           <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
+            class="inline-block p-4 rounded-t-lg"
             id="rewards-tab"
             data-tabs-target="#rewards"
             type="button"
@@ -44,7 +44,7 @@
             aria-controls="rewards"
             aria-selected="false"
           >
-            Rewards
+            <h2>Rewards</h2>
           </button>
         </li>
       </ul>
@@ -76,9 +76,7 @@
               hx-get="/account/{{id}}/transactions?skip=0"
               hx-swap="afterend"
             ></div>
-            <div class="flex justify-center w-full pt-2">
-              You reached the end.
-            </div>
+            <p class="flex justify-center w-full pt-2">You reached the end.</p>
           </div>
         </div>
       </div>
@@ -95,9 +93,7 @@
               hx-get="/account/{{id}}/rewards?skip=0"
               hx-swap="afterend"
             ></div>
-            <div class="flex justify-center w-full pt-2">
-              You reached the end.
-            </div>
+            <p class="flex justify-center w-full pt-2">You reached the end.</p>
           </div>
         </div>
       </div>

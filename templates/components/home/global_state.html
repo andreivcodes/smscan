@@ -1,7 +1,7 @@
 <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
   <div class="rounded-md border p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <h3 class="font-medium">Highest ATX:</h3>
+      <h1 class="font-medium">Highest ATX:</h1>
       <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
       <button onclick="copy()">
         <svg
@@ -41,30 +41,30 @@
 
   <div class="rounded-md border p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <h3 class="font-medium">Genesis Time:</h3>
+      <h1 class="font-medium">Genesis Time:</h1>
     </div>
     <div>
-      <div class="text-2xl font-bold">{{genesis_time}}</div>
+      <p class="text-2xl font-bold">{{genesis_time}}</p>
       <p class="text-xs">Unix timestamp: {{genesis_timestamp}}</p>
     </div>
   </div>
 
   <div class="rounded-md border p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <h3 class="font-medium">Current Epoch:</h3>
+      <h1 class="font-medium">Current Epoch:</h1>
     </div>
     <div>
-      <div class="text-2xl font-bold">{{current_epoch}}</div>
+      <p class="text-2xl font-bold">{{current_epoch}}</p>
       <p class="text-xs">Layer: {{current_layer}}</p>
     </div>
   </div>
 
   <div class="rounded-md border p-2">
     <div class="flex flex-row items-center justify-between pb-2 space-y-0">
-      <h3 class="font-medium">Layer Duration:</h3>
+      <h1 class="font-medium">Layer Duration:</h1>
     </div>
     <div>
-      <div class="text-2xl font-bold">{{layer_duration}} seconds</div>
+      <p class="text-2xl font-bold">{{layer_duration}} seconds</p>
       <p class="text-xs">{{epoch_num_layers}} layers every epoch</p>
     </div>
   </div>

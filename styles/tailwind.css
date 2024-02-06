@@ -1,4 +1,38 @@
 @tailwind base;
+
+@layer base {
+  svg {
+    @apply fill-black dark:fill-white;
+  }
+  body {
+    @apply dark:bg-neutral-950;
+  }
+  div {
+    @apply dark:bg-neutral-950 dark:border-neutral-300;
+  }
+  h1 {
+    @apply text-neutral-900 dark:text-neutral-200;
+  }
+  h2 {
+    @apply text-neutral-700 dark:text-neutral-200;
+  }
+  h3 {
+    @apply text-neutral-700 dark:text-neutral-200;
+  }
+  p {
+    @apply text-neutral-700 dark:text-neutral-200;
+  }
+
+  footer {
+    p {
+      @apply text-white;
+    }
+    div {
+      @apply bg-neutral-800 dark:bg-black;
+    }
+    @apply bg-neutral-800 dark:bg-black;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
-
