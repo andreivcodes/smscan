@@ -5,17 +5,15 @@
     <div class="py-2">
       <table>
         <tr>
-          <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-            Layer:
-          </td>
-          <td class="px-4 py-1 text-left text-zinc-500 dark:text-zinc-200">
+          <td class="px-4 py-1 align-top">Layer:</td>
+          <td class="px-4 py-1 text-left">
             <a
               class="flex flex-row hover:underline hover:pointer-events-auto"
               href="/layer/{{reward.layer}}"
             >
               <h1 class="text-sm font-mono">{{reward.layer}}</h1>
               <svg
-                class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+                class="w-[16px] mx-2"
                 viewBox="0 0 30 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -29,21 +27,13 @@
         </tr>
 
         <tr>
-          <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-            Total Reward:
-          </td>
-          <td class="px-4 py-1 text-left text-zinc-500 dark:text-zinc-200">
-            {{reward.total_reward}} SMH
-          </td>
+          <td class="px-4 py-1">Total Reward:</td>
+          <td class="px-4 py-1 text-left">{{reward.total_reward}} SMH</td>
         </tr>
 
         <tr>
-          <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-            Layer Reward:
-          </td>
-          <td class="px-4 py-1 text-left text-zinc-500 dark:text-zinc-200">
-            {{reward.layer_reward}} SMH
-          </td>
+          <td class="px-4 py-1 align-top">Layer Reward:</td>
+          <td class="px-4 py-1 text-left">{{reward.layer_reward}} SMH</td>
         </tr>
       </table>
     </div>

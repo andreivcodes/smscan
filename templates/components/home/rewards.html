@@ -7,9 +7,9 @@
           class="flex flex-row hover:underline hover:pointer-events-auto"
           href="/layer/{{reward.layer}}"
         >
-          <h1 class="text-sm font-mono">{{reward.layer}}</h1>
+          <p class="text-sm font-mono">{{reward.layer}}</p>
           <svg
-            class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+            class="w-[16px] mx-2"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,9 @@
           class="flex flex-row hover:underline hover:pointer-events-auto"
           href="/account/{{reward.coinbase}}"
         >
-          <h1 class="text-sm font-mono">{{reward.coinbase_short}}</h1>
+          <p class="text-sm font-mono">{{reward.coinbase_short}}</p>
           <svg
-            class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+            class="w-[16px] mx-2"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -40,13 +40,13 @@
     </div>
     <div class="flex flex-col gap-2 md:gap-0 items-start font-mono">
       <div class="flex flex-col md:flex-row justify-between w-full">
-        <p class="text-sm text-zinc-400">Layer reward:</p>
-        <p class="text-sm text-zinc-400">{{reward.layer_reward}} SMH</p>
+        <p class="text-sm">Layer reward:</p>
+        <p class="text-sm">{{reward.layer_reward}} SMH</p>
       </div>
 
       <div class="flex flex-col md:flex-row justify-between w-full">
-        <p class="text-sm text-zinc-400">Total reward:</p>
-        <p class="text-sm text-zinc-400">{{reward.total_reward}} SMH</p>
+        <p class="text-sm">Total reward:</p>
+        <p class="text-sm">{{reward.total_reward}} SMH</p>
       </div>
     </div>
   </div>

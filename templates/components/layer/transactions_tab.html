@@ -4,28 +4,20 @@
   <div class="py-2">
     <table>
       <tr>
-        <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-          Block Id:
-        </td>
-        <td
-          class="px-4 py-1 text-left break-all text-zinc-500 dark:text-zinc-200"
-        >
-          {{tx.block}}
-        </td>
+        <td class="px-4 py-1 align-top"><p>Block Id:</p></td>
+        <td class="px-4 py-1 text-left break-all"><p>{{tx.block}}</p></td>
       </tr>
 
       <tr>
-        <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-          Principal:
-        </td>
-        <td class="px-4 py-1 text-left text-zinc-500 dark:text-zinc-200">
+        <td class="px-4 py-1 align-top"><p>Principal:</p></td>
+        <td class="px-4 py-1 text-left">
           <a
             class="flex flex-row hover:underline hover:pointer-events-auto break-all"
             href="/account/{{tx.principal}}"
           >
-            <h1 class="text-sm font-mono break-all">{{tx.principal}}</h1>
+            <p class="text-sm font-mono break-all">{{tx.principal}}</p>
             <svg
-              class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+              class="w-[16px] mx-2"
               viewBox="0 0 30 30"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -39,65 +31,48 @@
       </tr>
 
       <tr>
-        <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-          Nonce:
-        </td>
-        <td class="px-4 py-1 text-left text-zinc-500 dark:text-zinc-200">
-          {{tx.nonce}}
-        </td>
+        <td class="px-4 py-1 align-top"><p>Nonce:</p></td>
+        <td class="px-4 py-1 text-left"><p>{{tx.nonce}}</p></td>
       </tr>
 
       <tr>
-        <td class="px-4 py-1 text-zinc-700 dark:text-zinc-400 align-top">
-          Timestamp:
-        </td>
-        <td class="px-4 py-1 text-left text-zinc-500 dark:text-zinc-200">
-          {{tx.timestamp}}
-        </td>
+        <td class="px-4 py-1 align-top"><p>Timestamp:</p></td>
+        <td class="px-4 py-1 text-left"><p>{{tx.timestamp}}</p></td>
       </tr>
 
       <tr>
-        <td
-          style="white-space: nowrap"
-          class="px-4 py-1 align-top text-zinc-700 dark:text-zinc-400"
-        >
-          Header:
+        <td style="white-space: nowrap" class="px-4 py-1 align-top">
+          <p>Header:</p>
         </td>
         <td
           style="word-break: break-all"
-          class="px-4 py-1 text-sm text-left text-zinc-500 dark:text-zinc-200 break-all"
+          class="px-4 py-1 text-sm text-left break-all"
         >
-          {{tx.header}}
+          <p>{{tx.header}}</p>
         </td>
       </tr>
 
       <tr>
-        <td
-          style="white-space: nowrap"
-          class="px-4 py-1 align-top text-zinc-700 dark:text-zinc-400"
-        >
-          Data:
+        <td style="white-space: nowrap" class="px-4 py-1 align-top">
+          <p>Data:</p>
         </td>
         <td
           style="word-break: break-all"
-          class="px-4 py-1 text-sm text-left text-zinc-500 dark:text-zinc-200 break-all"
+          class="px-4 py-1 text-sm text-left break-all"
         >
-          {{tx.tx}}
+          <p>{{tx.tx}}</p>
         </td>
       </tr>
 
       <tr>
-        <td
-          style="white-space: nowrap"
-          class="px-4 py-1 align-top text-zinc-700 dark:text-zinc-400"
-        >
-          Result:
+        <td style="white-space: nowrap" class="px-4 py-1 align-top">
+          <p>Result:</p>
         </td>
         <td
           style="word-break: break-all"
-          class="px-4 py-1 text-sm text-left text-zinc-500 dark:text-zinc-200 break-all"
+          class="px-4 py-1 text-sm text-left break-all"
         >
-          {{tx.result}}
+          <p>{{tx.result}}</p>
         </td>
       </tr>
     </table>

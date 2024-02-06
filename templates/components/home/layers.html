@@ -21,9 +21,9 @@
           class="flex flex-row hover:underline hover:pointer-events-auto"
           href="/layer/{{layer.id}}"
         >
-          <h1 class="text-sm pl-2">#{{layer.id}}</h1>
+          <p class="text-sm pl-2">#{{layer.id}}</p>
           <svg
-            class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+            class="w-[16px] mx-2"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -35,11 +35,11 @@
         </a>
       </div>
 
-      <p class="text-sm text-zinc-400 font-mono">{{layer.hash}}</p>
+      <p class="text-sm font-mono">{{layer.hash}}</p>
     </div>
     <div class="flex flex-col justify-start font-mono">
-      <p class="text-sm text-zinc-400">State: {{layer.state_hash}}</p>
-      <p class="text-sm text-zinc-400">Block: {{layer.applied_block}}</p>
+      <p class="text-sm">State: {{layer.state_hash}}</p>
+      <p class="text-sm">Block: {{layer.applied_block}}</p>
     </div>
   </div>
 </li>

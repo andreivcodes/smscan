@@ -7,9 +7,9 @@
           class="flex flex-row hover:underline hover:pointer-events-auto"
           href="/layer/{{tx.layer}}"
         >
-          <h1 class="text-sm">#{{tx.layer}}</h1>
+          <p class="text-sm">#{{tx.layer}}</p>
           <svg
-            class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+            class="w-[16px] mx-2"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,9 @@
           class="flex flex-row hover:underline hover:pointer-events-auto"
           href="/account/{{tx.principal}}"
         >
-          <h1 class="text-sm font-mono">{{tx.principal_short}}</h1>
+          <p class="text-sm font-mono">{{tx.principal_short}}</p>
           <svg
-            class="w-[16px] mx-2 fill-zinc-800 dark:fill-zinc-100"
+            class="w-[16px] mx-2"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +39,8 @@
       </div>
     </div>
     <div class="flex flex-col items-end font-mono">
-      <p class="text-sm text-zinc-400 max-w-1/2">Nonce: {{tx.nonce}}</p>
-      <p class="text-sm text-zinc-400 max-w-1/2 text-right">{{tx.timestamp}}</p>
+      <p class="text-sm max-w-1/2">Nonce: {{tx.nonce}}</p>
+      <p class="text-sm max-w-1/2 text-right">{{tx.timestamp}}</p>
     </div>
   </div>
 </li>

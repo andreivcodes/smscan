@@ -1,4 +1,4 @@
-<div class="bg-white dark:bg-zinc-800">
+<div class="">
   <div class="p-6 flex flex-col">
     <div class="p-2 lg:p-6">
       <div class="flex flex-col justify-between w-full">
@@ -7,10 +7,8 @@
           hx-get="/home/global_state"
           hx-trigger="load, every 10s"
         >
-          <div
-            class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-zinc-600 dark:text-zinc-200"
-          >
-            <div class="rounded-md border-2 p-2 dark:border-zinc-600">
+          <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-md border p-2 shadow-sm">
               <div
                 class="flex flex-row items-center justify-between pb-2 space-y-0"
               >
@@ -18,7 +16,7 @@
               </div>
             </div>
 
-            <div class="rounded-md border-2 p-2 dark:border-zinc-600">
+            <div class="rounded-md border p-2 shadow-sm">
               <div
                 class="flex flex-row items-center justify-between pb-2 space-y-0"
               >
@@ -26,7 +24,7 @@
               </div>
             </div>
 
-            <div class="rounded-md border-2 p-2 dark:border-zinc-600">
+            <div class="rounded-md border p-2 shadow-sm">
               <div
                 class="flex flex-row items-center justify-between pb-2 space-y-0"
               >
@@ -34,7 +32,7 @@
               </div>
             </div>
 
-            <div class="rounded-md border-2 p-2 dark:border-zinc-600">
+            <div class="rounded-md border p-2 shadow-sm">
               <div
                 class="flex flex-row items-center justify-between pb-2 space-y-0"
               >
@@ -48,31 +46,31 @@
     <div
       class="mx-auto items-start justify-start w-full flex flex-col lg:flex-row p-2 lg:p-6 gap-2 lg:gap-4"
     >
-      <div class="border-2 p-2 rounded-md w-full lg:w-3/5 dark:border-zinc-600">
+      <div class="border p-2 rounded-md w-full lg:w-3/5 shadow-sm">
         <h3 class="font-medium">Latest layers</h3>
         <ul
-          class="divide-y divide-zinc-800 dark:divide-zinc-500"
+          class="divide-y"
           hx-get="/home/layers"
           hx-trigger="load, every 10s"
-        />
+        ></ul>
       </div>
 
-      <div class="border-2 p-2 rounded-md w-full lg:w-3/5 dark:border-zinc-600">
+      <div class="border p-2 rounded-md w-full lg:w-3/5 shadow-sm">
         <h3 class="font-medium">Latest transactions</h3>
         <ul
-          class="divide-y divide-zinc-800 dark:divide-zinc-500"
+          class="divide-y"
           hx-get="/home/transactions"
           hx-trigger="load, every 10s"
-        />
+        ></ul>
       </div>
 
-      <div class="border-2 p-2 rounded-md w-full lg:w-3/5 dark:border-zinc-600">
+      <div class="border p-2 rounded-md w-full lg:w-3/5 shadow-sm">
         <h3 class="font-medium">Latest rewards</h3>
         <ul
-          class="divide-y divide-zinc-800 dark:divide-zinc-500"
+          class="divide-y"
           hx-get="/home/rewards"
           hx-trigger="load, every 10s"
-        />
+        ></ul>
       </div>
     </div>
   </div>

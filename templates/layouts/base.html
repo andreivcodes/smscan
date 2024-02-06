@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" style="width: 100%; margin: 0 auto">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,9 +30,7 @@
 
     {% block head %}{% endblock %}
   </head>
-  <body
-    class="bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 min-h-[100vh] flex flex-col w-full"
-  >
+  <body class="min-h-[100vh] flex flex-col w-full">
     {% include "components/header.html" %} {% block content %}{% endblock %} {%
     include "components/footer.html" %}
 
