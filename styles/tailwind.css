@@ -8,7 +8,7 @@
     @apply dark:bg-neutral-950;
   }
   div {
-    @apply dark:bg-neutral-950 dark:border-neutral-300;
+    @apply dark:bg-neutral-950 dark:border-neutral-700;
   }
   h1 {
     @apply text-neutral-900 dark:text-neutral-200;
