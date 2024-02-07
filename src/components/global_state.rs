@@ -5,6 +5,7 @@ use base64::{engine::general_purpose, Engine};
 use chrono::{DateTime, Duration, NaiveDateTime, Utc};
 use serde::{Deserialize, Serialize};
 use tokio::process::Command;
+use tracing::info;
 
 #[derive(Template, Debug)]
 #[template(path = "components/home/global_state.html")]
@@ -84,33 +85,48 @@ struct Coinbase {
 }
 
 pub async fn global_state_handler(State(state): State<AppState>) -> impl IntoResponse {
-    let global_state_read = state.global_state.read().await;
+    let now = Utc::now().naive_utc();
 
-    if (global_state_read.last_state_fetch - Utc::now().naive_utc()) > Duration::seconds(1) {
-        let mut global_state_write = state.global_state.write().await;
-        let new_global_state = fetch_global_state().await.unwrap();
+    let mut global_state_write = state.global_state.write().await;
+    let time_since_last_update = now - global_state_write.last_state_fetch;
 
-        global_state_write.highest_atx = new_global_state.highest_atx;
-        global_state_write.previous_atx = new_global_state.previous_atx;
-        global_state_write.genesis_timestamp = new_global_state.genesis_timestamp;
-        global_state_write.genesis_time = new_global_state.genesis_time;
-        global_state_write.current_layer = new_global_state.current_layer;
-        global_state_write.current_epoch = new_global_state.current_epoch;
-        global_state_write.epoch_num_layers = new_global_state.epoch_num_layers;
-        global_state_write.layer_duration = new_global_state.layer_duration;
-        global_state_write.last_state_fetch = Utc::now().naive_utc();
+    if time_since_last_update >= Duration::seconds(60) {
+        if let Ok(new_global_state) = fetch_global_state().await {
+            *global_state_write = new_global_state;
+        } else {
+            eprintln!("Failed to fetch global state");
+        }
     }
 
-    let template = GlobalStateTemplate {
-        highest_atx: global_state_read.highest_atx.to_string(),
-        previous_atx: global_state_read.previous_atx.to_string(),
-        genesis_timestamp: global_state_read.genesis_timestamp.to_string(),
-        genesis_time: global_state_read.genesis_time.to_string(),
-        current_layer: global_state_read.current_layer,
-        current_epoch: global_state_read.current_epoch,
-        epoch_num_layers: global_state_read.epoch_num_layers,
-        layer_duration: global_state_read.layer_duration.to_string(),
+    drop(global_state_write);
+
+    let template = {
+        let global_state_read = state.global_state.read().await;
+        GlobalStateTemplate {
+            highest_atx: global_state_read.highest_atx.to_string(),
+            previous_atx: global_state_read.previous_atx.to_string(),
+            genesis_timestamp: global_state_read.genesis_timestamp.to_string(),
+            genesis_time: global_state_read.genesis_time.to_string(),
+            current_layer: global_state_read.current_layer,
+            current_epoch: global_state_read.current_epoch,
+            epoch_num_layers: global_state_read.epoch_num_layers,
+            layer_duration: global_state_read.layer_duration.to_string(),
+        }
     };
+
+    // let template = {
+    //     let new_state = fetch_global_state().await.unwrap();
+    //     GlobalStateTemplate {
+    //         highest_atx: new_state.highest_atx.to_string(),
+    //         previous_atx: new_state.previous_atx.to_string(),
+    //         genesis_timestamp: new_state.genesis_timestamp.to_string(),
+    //         genesis_time: new_state.genesis_time.to_string(),
+    //         current_layer: new_state.current_layer,
+    //         current_epoch: new_state.current_epoch,
+    //         epoch_num_layers: new_state.epoch_num_layers,
+    //         layer_duration: new_state.layer_duration.to_string(),
+    //     }
+    // };
 
     HtmlTemplate(template)
 }
