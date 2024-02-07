@@ -56,14 +56,14 @@ async fn main() -> anyhow::Result<()> {
     let state = AppState {
         database: conn,
         global_state: Arc::new(RwLock::new(GlobalState {
-            highest_atx: "".into(),
-            previous_atx: "".into(),
-            genesis_timestamp: "".into(),
-            genesis_time: "".into(),
+            highest_atx: "Loading...".into(),
+            previous_atx: "Loading...".into(),
+            genesis_timestamp: "Loading...".into(),
+            genesis_time: "Loading...".into(),
             current_layer: 0,
             current_epoch: 0,
             epoch_num_layers: 0,
-            layer_duration: "".into(),
+            layer_duration: "Loading...".into(),
             last_state_fetch: NaiveDateTime::from_timestamp_millis(0).unwrap(),
         })),
     };
