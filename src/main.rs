@@ -106,19 +106,16 @@ async fn search_handler(query: Query<Search>, State(state): State<AppState>) -> 
 
     let conn = &state.database;
 
-    match query.input.parse::<i32>() {
-        Ok(input) => {
-            let layer = layers::Entity::find_by_id(input).one(conn).await.unwrap();
+    if let Ok(input) = query.input.parse::<i32>() {
+        let layer = layers::Entity::find_by_id(input).one(conn).await.unwrap();
 
-            if layer.is_some() {
-                headers.insert(
-                    "HX-Redirect",
-                    format!("/layer/{}", query.input).parse().unwrap(),
-                );
-                return headers;
-            }
+        if layer.is_some() {
+            headers.insert(
+                "HX-Redirect",
+                format!("/layer/{}", query.input).parse().unwrap(),
+            );
+            return headers;
         }
-        Err(_) => {}
     }
 
     let account = accounts::Entity::find()
