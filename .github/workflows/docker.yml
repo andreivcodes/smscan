@@ -20,5 +20,5 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Run build_and_push.sh
-        run: ./build_and_push.sh
+      - name: Run build_and_push_ci.sh
+        run: ./build_and_push_ci.sh

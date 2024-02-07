@@ -6,7 +6,6 @@ use chrono::{DateTime, Duration, NaiveDateTime, Utc};
 use serde::{Deserialize, Serialize};
 use tokio::process::Command;
 
-
 #[derive(Template, Debug)]
 #[template(path = "components/home/global_state.html")]
 struct GlobalStateTemplate {
