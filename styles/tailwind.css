@@ -14,10 +14,10 @@
     @apply text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-200;
   }
   h2 {
-    @apply text-neutral-700 dark:text-neutral-200;
+    @apply text-lg font-bold tracking-tight text-neutral-700 dark:text-neutral-200;
   }
   h3 {
-    @apply text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-100;
+    @apply font-bold tracking-tight text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-100;
   }
   h4 {
     @apply text-neutral-700 dark:text-neutral-200;
