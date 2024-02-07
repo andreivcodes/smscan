@@ -5,71 +5,51 @@
     <div class="py-2">
       <table>
         <tr>
-          <td class="px-4 py-1 align-top"><h3>Block Id:</h3></td>
+          <td class="px-4 py-1 align-top"><h4>Block Id:</h4></td>
           <td class="px-4 py-1 text-left break-all"><p>{{tx.block}}</p></td>
         </tr>
 
         <tr>
-          <td class="px-4 py-1 align-top"><h3>Layer:</h3></td>
+          <td class="px-4 py-1 align-top"><h4>Layer:</h4></td>
           <td class="px-4 py-1 text-left">
             <a
               class="flex flex-row hover:underline hover:pointer-events-auto"
               href="/layer/{{tx.layer}}"
             >
-              <h1 class="text-sm font-mono"><p>{{tx.layer}}</p></h1>
-              <svg
-                class="w-[16px] mx-2"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.033 6.966c.584.583.584 1.529 0 2.112l-7.955 7.956c-.583.583-1.529.583-2.112 0-.583-.583-.583-1.529 0-2.112l7.956-7.956c.582-.583 1.528-.583 2.111 0zm-9.138 13.386c-1.171 1.171-3.076 1.171-4.248 0-1.171-1.171-1.171-3.077 0-4.248l5.639-5.632c-1.892-.459-3.971.05-5.449 1.528l-2.147 2.147c-2.254 2.254-2.254 5.909 0 8.163 2.254 2.254 5.909 2.254 8.163 0l2.147-2.148c1.477-1.477 1.986-3.556 1.527-5.448l-5.632 5.638zm6.251-18.662l-2.146 2.148c-1.478 1.478-1.99 3.553-1.53 5.445l5.634-5.635c1.172-1.171 3.077-1.171 4.248 0 1.172 1.171 1.172 3.077 0 4.248l-5.635 5.635c1.893.459 3.968-.053 5.445-1.53l2.146-2.147c2.254-2.254 2.254-5.908 0-8.163-2.253-2.254-5.908-2.254-8.162-.001z"
-                />
-              </svg>
+              <p>{{tx.layer}}</p>
             </a>
           </td>
         </tr>
 
         <tr>
-          <td class="px-4 py-1 align-top"><h3>Principal:</h3></td>
+          <td class="px-4 py-1 align-top"><h4>Principal:</h4></td>
           <td class="px-4 py-1 text-left break-all">
             <a
               class="flex flex-row hover:underline hover:pointer-events-auto"
               href="/account/{{tx.principal}}"
             >
-              <h1 class="text-sm font-mono"><p>{{tx.principal}}</p></h1>
-              <svg
-                class="w-[16px] mx-2"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.033 6.966c.584.583.584 1.529 0 2.112l-7.955 7.956c-.583.583-1.529.583-2.112 0-.583-.583-.583-1.529 0-2.112l7.956-7.956c.582-.583 1.528-.583 2.111 0zm-9.138 13.386c-1.171 1.171-3.076 1.171-4.248 0-1.171-1.171-1.171-3.077 0-4.248l5.639-5.632c-1.892-.459-3.971.05-5.449 1.528l-2.147 2.147c-2.254 2.254-2.254 5.909 0 8.163 2.254 2.254 5.909 2.254 8.163 0l2.147-2.148c1.477-1.477 1.986-3.556 1.527-5.448l-5.632 5.638zm6.251-18.662l-2.146 2.148c-1.478 1.478-1.99 3.553-1.53 5.445l5.634-5.635c1.172-1.171 3.077-1.171 4.248 0 1.172 1.171 1.172 3.077 0 4.248l-5.635 5.635c1.893.459 3.968-.053 5.445-1.53l2.146-2.147c2.254-2.254 2.254-5.908 0-8.163-2.253-2.254-5.908-2.254-8.162-.001z"
-                />
-              </svg>
+              <p>{{tx.principal}}</p>
             </a>
           </td>
         </tr>
 
         <tr>
-          <td class="px-4 py-1 align-top"><h3>Nonce:</h3></td>
+          <td class="px-4 py-1 align-top"><h4>Nonce:</h4></td>
           <td class="px-4 py-1 text-left"><p>{{tx.nonce}}</p></td>
         </tr>
 
         <tr>
-          <td class="px-4 py-1"><h3>Timestamp:</h3></td>
+          <td class="px-4 py-1"><h4>Timestamp:</h4></td>
           <td class="px-4 py-1 text-left"><p>{{tx.timestamp}}</p></td>
         </tr>
 
         <tr>
           <td style="white-space: nowrap" class="px-4 py-1 align-top">
-            <h3>Header:</h3>
+            <h4>Header:</h4>
           </td>
           <td
             style="word-break: break-all"
-            class="px-4 py-1 text-sm text-left break-all"
+            class="px-4 py-1 text-left break-all"
           >
             <p>{{tx.header}}</p>
           </td>
@@ -77,11 +57,11 @@
 
         <tr>
           <td style="white-space: nowrap" class="px-4 py-1 align-top">
-            <h3>Data:</h3>
+            <h4>Data:</h4>
           </td>
           <td
             style="word-break: break-all"
-            class="px-4 py-1 text-sm text-left break-all"
+            class="px-4 py-1 text-left break-all"
           >
             <p>{{tx.tx}}</p>
           </td>
@@ -89,11 +69,11 @@
 
         <tr>
           <td style="white-space: nowrap" class="px-4 py-1 align-top">
-            <h3>Result:</h3>
+            <h4>Result:</h4>
           </td>
           <td
             style="word-break: break-all"
-            class="px-4 py-1 text-sm text-left break-all"
+            class="px-4 py-1 text-left break-all"
           >
             <p>{{tx.result}}</p>
           </td>
