@@ -54,8 +54,6 @@ async fn account_handler(
         .await
         .unwrap();
 
-    println!("{:?}", db_account.len());
-
     let layer = AccountTabTemplate {
         address: db_account
             .first()
@@ -204,7 +202,7 @@ async fn transactions_handler(
         .collect();
 
     let template = TransactionsTabTemplate {
-        id: id,
+        id,
         txs,
         txs_count: db_transactions.len() as u64,
         skip: pagination.skip.unwrap_or(0) + 20,
@@ -268,7 +266,7 @@ async fn rewards_handler(
         .collect();
 
     let template = RewardsTabTemplate {
-        id: id,
+        id,
         rewards,
         rewards_count: db_rewards.len() as u64,
         skip: pagination.skip.unwrap_or(0) + 20,

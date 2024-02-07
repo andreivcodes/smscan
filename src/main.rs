@@ -10,10 +10,13 @@ use axum::{
     routing::get,
     Router,
 };
+use chrono::NaiveDateTime;
 use db_entities::layers;
 use dotenv::dotenv;
 use sea_orm::{ColumnTrait, Database, DatabaseConnection, EntityTrait, QueryFilter};
 use serde::Deserialize;
+use std::sync::Arc;
+use tokio::sync::RwLock;
 use tower_http::services::ServeDir;
 use tracing::info;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
@@ -24,6 +27,19 @@ mod pages;
 #[derive(Clone)]
 pub struct AppState {
     database: DatabaseConnection,
+    global_state: Arc<RwLock<GlobalState>>,
+}
+#[derive(Clone, Debug)]
+struct GlobalState {
+    highest_atx: String,
+    previous_atx: String,
+    genesis_timestamp: String,
+    genesis_time: String,
+    current_layer: u64,
+    current_epoch: u64,
+    epoch_num_layers: u64,
+    layer_duration: String,
+    last_state_fetch: NaiveDateTime,
 }
 
 #[tokio::main]
@@ -37,7 +53,20 @@ async fn main() -> anyhow::Result<()> {
     info!("initializing router and assets");
 
     let conn = Database::connect("sqlite://node-data/state.sql?mode=ro").await?;
-    let state = AppState { database: conn };
+    let state = AppState {
+        database: conn,
+        global_state: Arc::new(RwLock::new(GlobalState {
+            highest_atx: "".into(),
+            previous_atx: "".into(),
+            genesis_timestamp: "".into(),
+            genesis_time: "".into(),
+            current_layer: 0,
+            current_epoch: 0,
+            epoch_num_layers: 0,
+            layer_duration: "".into(),
+            last_state_fetch: NaiveDateTime::from_timestamp_millis(0).unwrap(),
+        })),
+    };
 
     let assets_path = std::env::current_dir()?;
 
@@ -107,7 +136,7 @@ async fn search_handler(query: Query<Search>, State(state): State<AppState>) -> 
     }
 
     headers.insert("HX-Redirect", "/".parse().unwrap());
-    return headers;
+    headers
 }
 
 struct HtmlTemplate<T>(T);

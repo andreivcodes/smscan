@@ -1,13 +1,13 @@
+use crate::{AppState, GlobalState, HtmlTemplate};
 use askama::Template;
 use axum::{extract::State, response::IntoResponse};
 use base64::{engine::general_purpose, Engine};
-use chrono::{DateTime, NaiveDateTime, Utc};
+use chrono::{DateTime, Duration, NaiveDateTime, Utc};
 use serde::{Deserialize, Serialize};
 use tokio::process::Command;
 
-use crate::{AppState, HtmlTemplate};
 
-#[derive(Template)]
+#[derive(Template, Debug)]
 #[template(path = "components/home/global_state.html")]
 struct GlobalStateTemplate {
     highest_atx: String,
@@ -84,7 +84,39 @@ struct Coinbase {
     address: String,
 }
 
-pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoResponse {
+pub async fn global_state_handler(State(state): State<AppState>) -> impl IntoResponse {
+    let global_state_read = state.global_state.read().await;
+
+    if (global_state_read.last_state_fetch - Utc::now().naive_utc()) > Duration::seconds(1) {
+        let mut global_state_write = state.global_state.write().await;
+        let new_global_state = fetch_global_state().await.unwrap();
+
+        global_state_write.highest_atx = new_global_state.highest_atx;
+        global_state_write.previous_atx = new_global_state.previous_atx;
+        global_state_write.genesis_timestamp = new_global_state.genesis_timestamp;
+        global_state_write.genesis_time = new_global_state.genesis_time;
+        global_state_write.current_layer = new_global_state.current_layer;
+        global_state_write.current_epoch = new_global_state.current_epoch;
+        global_state_write.epoch_num_layers = new_global_state.epoch_num_layers;
+        global_state_write.layer_duration = new_global_state.layer_duration;
+        global_state_write.last_state_fetch = Utc::now().naive_utc();
+    }
+
+    let template = GlobalStateTemplate {
+        highest_atx: global_state_read.highest_atx.to_string(),
+        previous_atx: global_state_read.previous_atx.to_string(),
+        genesis_timestamp: global_state_read.genesis_timestamp.to_string(),
+        genesis_time: global_state_read.genesis_time.to_string(),
+        current_layer: global_state_read.current_layer,
+        current_epoch: global_state_read.current_epoch,
+        epoch_num_layers: global_state_read.epoch_num_layers,
+        layer_duration: global_state_read.layer_duration.to_string(),
+    };
+
+    HtmlTemplate(template)
+}
+
+async fn fetch_global_state() -> anyhow::Result<GlobalState> {
     let node_host = std::env::var("NODE_HOST").unwrap();
 
     let grpcurl_highest: Vec<u8> = Command::new("grpcurl")
@@ -171,7 +203,7 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
     let layer_duration_result: MeshServiceLayerDurationResult =
         serde_json::from_str(String::from_utf8(grpcurl_layerduration).unwrap().as_str()).unwrap();
 
-    let template = GlobalStateTemplate {
+    Ok(GlobalState {
         highest_atx: base64_to_hex(highest_result.atx.id.id),
         previous_atx: base64_to_hex(highest_result.atx.prevAtx.id),
         genesis_timestamp: genesis_time_result.unixtime.value.clone(),
@@ -188,9 +220,8 @@ pub async fn global_state_handler(State(_state): State<AppState>) -> impl IntoRe
         current_epoch: current_epoch_result.epochnum.number,
         epoch_num_layers: epoch_num_layers_result.numlayers.number,
         layer_duration: layer_duration_result.duration.value,
-    };
-
-    HtmlTemplate(template)
+        last_state_fetch: Utc::now().naive_utc(),
+    })
 }
 
 fn base64_to_hex(base64: String) -> String {
