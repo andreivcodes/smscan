@@ -5,7 +5,6 @@ use base64::{engine::general_purpose, Engine};
 use chrono::{DateTime, Duration, NaiveDateTime, Utc};
 use serde::{Deserialize, Serialize};
 use tokio::process::Command;
-use tracing::info;
 
 #[derive(Template, Debug)]
 #[template(path = "components/home/global_state.html")]
