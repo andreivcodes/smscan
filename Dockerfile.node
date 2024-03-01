@@ -20,7 +20,7 @@ RUN git clone --progress --verbose https://github.com/spacemeshos/go-spacemesh
 WORKDIR /smscan/go-spacemesh
 
 RUN git fetch --all --tags
-RUN git checkout tags/v1.3.10
+RUN git checkout tags/v1.3.11
 
 RUN make get-libs
 RUN make install
